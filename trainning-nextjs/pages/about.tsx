@@ -1,10 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-about.propTypes = {
-    
-};
-
 function about(props) {
     return (
         <div>
