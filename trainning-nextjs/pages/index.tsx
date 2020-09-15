@@ -3,12 +3,26 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Image from '../assets/abc.jpg'
 import Layout from '../components/Layout'
-import { useEffect } from 'react'
+import HobbyList from '../components/HobbyList'
+
+import { useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import casual from 'casual-browserify'
+import {addNewHobby} from '../actions/hobby'
 function Home() {
   useEffect(() => {
     console.log('use effect')
   }, [])
-  console.log('render');
+  const hobbyList = useSelector(state =>state.hobby.list);
+  const dispatch = useDispatch();
+  const handleAddHobbyClick=()=>{
+       const newHobby={
+         id: casual.uuid,
+         title: casual.title
+       }
+       const action= addNewHobby(newHobby)
+       dispatch(action)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -21,9 +35,15 @@ function Home() {
       <Link href="/user/10">
           <button><a>User</a></button>
       </Link>
-      <img src={Image} />
-      <img src="/images/image003_vbgj.jpg" />
+      <Link href="/test-redux">
+          <button><a>text-redux</a></button>
+      </Link>
+      {/* <img src={Image} />
+      <img src="/images/image003_vbgj.jpg" /> */}
       <Layout/>
+      <h3>Connect with redux</h3>
+      <button onClick={handleAddHobbyClick}>Random</button>
+      <HobbyList hobbyList={hobbyList}></HobbyList>
     </div>
   )
 }
