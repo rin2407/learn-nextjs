@@ -7,11 +7,26 @@ function Login() {
         firstName: 'join',
         lastName: 'smith'
     })
+    const [value, setValue] = useState({
+        username:'',
+        password:''
+    });
+    const onHandelChange=(event)=>{
+        setValue({
+          ...value,
+          [event.target.name] : event.target.value,
+        });    
+      }
     useEffect(() => {
-       console.log('effect login')
+       console.log('effect login');
     }, [])
     function handleClick(){
         setData('gia tri click');
+        const userLogin= {
+            username: value.username,
+            password: value.password
+        }
+        console.log(userLogin)
     }
     const fullName= useMemo(() =>{
         return user.firstName+ ' ' + user.lastName;
@@ -24,11 +39,11 @@ function Login() {
             </div>
               <div className="login-username">
                    <lable>User name</lable>
-                   <input type="text" />
+                   <input type="text" name="username" onChange={onHandelChange}/>
               </div>
               <div className="login-password">
                   <lable>password</lable>
-                  <input type="password" />
+                  <input type="password" name="password" onChange={onHandelChange} />
               </div>
               <div>
                   <button onClick={handleClick}>onClick</button>
