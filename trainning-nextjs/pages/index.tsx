@@ -4,16 +4,16 @@ import Link from 'next/link'
 import Image from '../assets/abc.jpg'
 import Layout from '../components/Layout'
 import HobbyList from '../components/HobbyList'
-
 import { useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import casual from 'casual-browserify'
-import {addNewHobby} from '../actions/hobby'
+import {addNewHobby,setStatus} from '../actions/hobbyAction'
 function Home() {
   useEffect(() => {
     console.log('use effect')
   }, [])
   const hobbyList = useSelector(state =>state.hobby.list);
+  const status= useSelector(state=>state.hobby.status)
   const dispatch = useDispatch();
   const handleAddHobbyClick=()=>{
        const newHobby={
@@ -23,12 +23,18 @@ function Home() {
        const action= addNewHobby(newHobby)
        dispatch(action)
   }
+  const handleStatus= ()=>{
+    const status='true'
+    const action= setStatus(status)
+    dispatch(action)
+  }
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App edit</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+       <h4 onClick={handleStatus}>status: {status}</h4>
       <Link href="/login">
           <button><a>Login</a></button>
       </Link>

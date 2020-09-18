@@ -1,6 +1,7 @@
 const initialState= {
-    list : [],
-    activeId:null
+    list : [{id:3233,title:'so 3233'}],
+    activeId:null,
+    status: 'false'
 }
 const hobbyReducer=(state=initialState,action)=>{
     switch (action.type) {
@@ -17,7 +18,12 @@ const hobbyReducer=(state=initialState,action)=>{
                 ...state,
                 activeId: newActive
             }
-
+        case "SET_STATUS":
+            const newStatus= action.payload
+            return{
+                ...state,
+                status:newStatus
+            }
         default:
             return state;
     }

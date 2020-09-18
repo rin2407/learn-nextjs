@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 HobbyList.propTypes = {
     hobbyList: PropTypes.array,
     activeId: PropTypes.string,

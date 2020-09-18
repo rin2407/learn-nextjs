@@ -10,3 +10,9 @@ export const setActiveHobby=(hobby)=>{
         payload: hobby
     }
 }
+export const setStatus=(status)=>{
+    return {
+        type :"SET_STATUS",
+        payload: status
+    }
+}

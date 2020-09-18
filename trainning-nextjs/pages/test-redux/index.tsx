@@ -2,7 +2,7 @@ import React from 'react';
 import HobbyList from '../../components/HobbyList';
 import { useSelector, useDispatch } from 'react-redux'
 import casual from 'casual-browserify'
-import { addNewHobby,setActiveHobby } from '../../actions/hobby'
+import { addNewHobby,setActiveHobby } from '../../actions/hobbyAction'
 function TestRedux() {
     const hobbyList = useSelector(state => state.hobby.list);
     const activeId = useSelector(state => state.hobby.activeId)
